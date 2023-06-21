@@ -1,0 +1,14 @@
+Django==4.0.2
+pylint-django==2.5.0
+django-debug-toolbar==3.2.4
+
+django-crispy-forms==1.14.0
+django-environ==0.8.1
+django-letsencrypt
+django-ssl-auth
+whitenoise==5.3.0
+gunicorn
+cx_Oracle
+letsencrypt
+Pillow
+#psycopg2

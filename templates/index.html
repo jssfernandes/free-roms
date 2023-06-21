@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Free-Roms</title>
+	<!-- Head -->
+		{% include 'components/head.html' %}
+	</head>
+	<body class="is-preload">
+
+		<!-- Wrapper -->
+			<div id="wrapper">
+
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+
+							<!-- Header -->
+								<header id="header">
+									<a href="index.html" class="logo"><strong>Free-Roms</strong></a>
+									<ul class="icons">
+										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="#" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+										<li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
+									</ul>
+								</header>
+
+							<!-- Section -->
+							{% block section %}
+								<section>
+									<header class="major">
+										<h2>Últimas Inclusões</h2>
+									</header>
+									<div class="posts">
+										{% for game in games %}
+											<article>
+												{% for media_files in game.media_files %}
+													{% if media_files.image_file and media_files.cover %}
+														<a href="" class="image"><img src="{{media_files.image_file.url}}" alt="" /></a>
+													{% endif %}
+												{% endfor %}
+												<!-- <a href="#" class="image"><img src="{% static 'images/pic01.jpg' %}" alt="" /></a> -->
+												<h3>{{ game.name }}</h3>
+												<p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+												<ul class="actions">
+													<li><a href="#" class="button">More</a></li>
+												</ul>
+											</article>
+										{% endfor %}
+									</div>
+								</section>
+							{% endblock %}
+						</div>
+					</div>
+				<!-- Sidebar -->
+					{% include 'components/sidebar.html' %}
+			<!-- Scripts -->
+		{% include 'components/scripts.html' %}
+	</body>
+</html>

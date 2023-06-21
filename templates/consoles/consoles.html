@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block section %}
+<section>
+    <header class="major">
+        <h2>Consoles</h2>
+    </header>
+    <div class="posts">
+        <!-- for -->
+        {% for consoles in consoles %}
+        <article>
+            {% for media_files in consoles %}
+                {% if media_files.image_file and media_files.cover %}
+                    <a href="{% url 'console_details' media_files.console.id %}" class="image"><img src="{{media_files.image_file.url}}" alt="" /></a>
+                {% endif %}
+            {% endfor %}
+
+            <h3>{{ consoles.0.console.name }}</h3>
+            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+            <p>{{consoles.0.console.name|truncatewords:2}}</p>
+            <ul class="actions">
+                <li><a href="{% url 'console_details' consoles.0.console.id %}" class="button">More</a></li>
+            </ul>
+        </article>
+        
+        {% endfor %}
+        <!-- end for -->
+    </div>
+    {% include 'components/pagination.html' %}
+</section>
+{% endblock %}

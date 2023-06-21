@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block section %}
+<section>
+    <header class="major">
+        <h2>Games</h2>
+    </header>
+    <div class="posts">
+        <!-- for -->
+        {% for games in games %}
+        <article>
+            {% for media_files in games.media_files %}
+                {% if media_files.image_file and media_files.cover %}
+                    <!-- <a href="{% url 'game_list_by_console' media_files.game.id %}" class="image"><img src="{{media_files.image_file.url}}" alt="" /></a> -->
+                    <a href="" class="image"><img src="{{media_files.image_file.url}}" alt="" /></a>
+                {% endif %}
+            {% endfor %}
+
+            <!-- <h3>{{ games.0.game.console }}</h3> -->
+            <h3>{{ games.name }}</h3>
+            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+            <p>{{games.0.game.name|truncatewords:2}}</p>
+            <!-- <ul class="actions">
+                {{games}}
+
+            </ul> -->
+        </article>
+        {% endfor %}
+
+    </div>
+    {% include 'components/pagination.html' %}
+</section>
+{% endblock %}

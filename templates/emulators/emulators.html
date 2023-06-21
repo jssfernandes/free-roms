@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block section %}
+<section>
+    <header class="major">
+        <h2>Emulators</h2>
+    </header>
+    <div class="posts">
+        <!-- for -->
+        {% for emulators in emulators %}
+        <article>
+            {% for media_files in emulators %}
+                {% if media_files.image_file and media_files.cover %}
+                    <a href="{% url 'emulator_details' media_files.emulator.console.short_name %}" class="image">
+                        <img src="{{media_files.image_file.url}}" alt="" />
+                    </a>
+                {% endif %}
+            {% endfor %}
+
+            <h3>{{ emulators.0.emulator.name }}</h3>
+            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+            <p>{{emulators.0.emulator.name|truncatewords:2}}</p>
+            <ul class="actions">
+                <li><a href="{% url 'emulator_details' emulators.0.emulator.console.short_name %}" class="button">More</a></li>
+            </ul>
+        </article>
+        
+        {% endfor %}
+        <!-- end for -->
+    </div>
+    {% include 'components/pagination.html' %}
+</section>
+{% endblock %}

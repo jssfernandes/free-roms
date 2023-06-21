@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block section %}
+<section>
+    <header class="major">
+        <h2>{{game.name}}</h2>
+    </header>
+    <div class="main">
+        {% for mediafile in game.mediafiles %}
+            {% if mediafile.image_file and mediafile.cover %}
+                    <span class="image left"><img src="{{mediafile.image_file.url}}" alt="" /></span>
+                    Lorem ipsum dolor sit accumsan interdum nisi, quis tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent tincidunt felis sagittis eget. tempus euismod. Vestibulum ante ipsum primis sagittis eget. tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan eu faucibus. Integer ac pellentesque praesent.
+                </p>
+            {%endif%}
+        {% endfor %}
+    </div>
+</section>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block section %}
+<section>
+    <header class="major">
+        <h2>consoles</h2>
+    </header>
+    <div class="posts">
+        <!-- for -->
+        {% for consoles in console_list.consoles %}
+        <article>
+            {% for console in consoles %}
+                {% if console.image_file and console.cover %}
+                    <a href="#" class="image"><img src="{{console.image_file.url}}" alt="" /></a>
+                {% endif %}
+            {% endfor %}
+
+            <h3>{{ consoles.0.console.name }}</h3>
+            <p>Aenean ornare velit lacus, ac varius enim lorem ullamcorper dolore. Proin aliquam facilisis ante interdum. Sed nulla amet lorem feugiat tempus aliquam.</p>
+            {% for emulator in emulators %}
+                <li><a href="#">{{ emulator.consoles__short_name }}</a></li>
+            {% endfor %}
+            {% for game in games %}
+                {{ game.consoles__short_name }}<br>
+            {% endfor %}
+            <ul class="actions">
+                <li><a href="#" class="button">More</a></li>
+            </ul>
+        </article>
+        
+        {% endfor %}
+        <!-- end for -->
+    </div>
+</section>
+{% endblock %}
